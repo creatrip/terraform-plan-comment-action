@@ -9793,6 +9793,7 @@ const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 
 // --- Inputs ---
+const token = core.getInput('token');
 const directory = core.getInput('directory').replace(/.*\//g, '');
 const stdout = core.getInput('stdout');
 const stderr = core.getInput('stderr');
@@ -9819,6 +9820,7 @@ const result = stdout
   .join('\n');
 
 // --- Outputs ---
+const octokit = github.getOctokit(token);
 if (hasChanges === false) return;
 if (hasError === true) {
   let output = `**${directory}**  \n`;
@@ -9833,7 +9835,7 @@ if (hasError === true) {
 
   output += '</details>';
 
-  github.rest.issues.createComment({
+  octokit.rest.issues.createComment({
     issue_number: github.context.issue.number,
     owner: github.context.repo.owner,
     repo: github.context.repo.repo,
@@ -9852,7 +9854,7 @@ if (hasError === true) {
 
   output += '</details>';
 
-  github.rest.issues.createComment({
+  octokit.rest.issues.createComment({
     issue_number: github.context.issue.number,
     owner: github.context.repo.owner,
     repo: github.context.repo.repo,
