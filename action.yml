@@ -2,6 +2,10 @@ name: 'Add terraform plan comment'
 description: 'add a terraform plan comment'
 
 inputs:
+  token:
+    description: 'token'
+    required: true
+    default: ''
   directory:
     description: 'directory'
     required: true
