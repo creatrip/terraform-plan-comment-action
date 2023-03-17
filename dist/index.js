@@ -9814,8 +9814,8 @@ async function main() {
    *   <= read (data resources)
    */
   const result = stdout
-    .replace(/.*Terraform will perform the following actions:/g, '')
-    .replace(/─────────────────────────────────────────────────────────────────────────────.*/g, '')
+    .replace(/[\s\S]*Terraform will perform the following actions:/g, '')
+    .replace(/─────────────────────────────────────────────────────────────────────────────[\s\S]*/g, '')
     .split('\n')
     .map((line) => (line.includes(' ~ ') ? `+${line}` : line))
     .map((line) => (line.includes(' + ') ? `+${line}` : line))
@@ -9851,7 +9851,7 @@ async function main() {
 
     output += '```\n';
     output += error;
-    output += '```\n\n';
+    output += '\n```\n\n';
 
     output += '</details>';
   } else {
@@ -9863,7 +9863,7 @@ async function main() {
 
     output += '```diff\n';
     output += result;
-    output += '```\n\n';
+    output += '\n```\n\n';
 
     output += '</details>';
   }
