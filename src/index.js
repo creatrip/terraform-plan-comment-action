@@ -47,10 +47,12 @@ async function main() {
   }
   const previousComment = await findPreviousComment();
 
+  let output;
+
   // --- Outputs ---
   if (hasChanges === false) return;
   if (hasError === true) {
-    let output = `**${directory}**  \n`;
+    output = `**${directory}**  \n`;
 
     output += `Error: ${result}\n\n`;
 
@@ -62,7 +64,7 @@ async function main() {
 
     output += '</details>';
   } else {
-    let output = `**${directory}**  \n`;
+    output = `**${directory}**  \n`;
 
     output += `${plan}\n\n`;
 
