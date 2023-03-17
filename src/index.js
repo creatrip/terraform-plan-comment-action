@@ -50,7 +50,16 @@ async function main() {
   let output;
 
   // --- Outputs ---
-  if (hasChanges === false) return;
+  if (hasChanges === false) {
+    if (previousComment) {
+      await octokit.rest.issues.deleteComment({
+        owner: github.context.repo.owner,
+        repo: github.context.repo.repo,
+        comment_id: previousComment.id,
+      });
+    }
+    return;
+  }
   if (hasError === true) {
     output = `**${directory}**  \n`;
 
