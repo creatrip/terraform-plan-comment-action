@@ -2,12 +2,16 @@ name: 'Add terraform plan comment'
 description: 'add a terraform plan comment'
 
 inputs:
-  issue-number:
-    description: 'issue-number'
-    required: true
-    default: ''
   token:
     description: 'token'
+    required: false
+    default: ${{ github.token }}
+  repository:
+    description: 'repository'
+    required: false
+    default: ${{ github.repository }}
+  issue-number:
+    description: 'issue-number'
     required: true
     default: ''
   directory:

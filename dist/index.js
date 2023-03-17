@@ -9795,6 +9795,7 @@ async function main() {
 
   // --- Inputs ---
   const token = core.getInput('token');
+  const repository = core.getInput('repository');
   const issueNumber = core.getInput('issue_number');
   const directory = core.getInput('directory').replace(/.*\//g, '');
   const stdout = core.getInput('stdout');
@@ -9823,11 +9824,11 @@ async function main() {
 
   // --- Find Previous Comment ---
   const octokit = github.getOctokit(token);
-  const [owner, repo] = inputs.repository.split('/');
+  const [owner, repo] = repository.split('/');
   const parameters = {
     owner: owner,
     repo: repo,
-    issue_number: inputs.issueNumber,
+    issue_number: issueNumber,
   };
   async function findPreviousComment() {
     for await (const { data: comments } of octokit.paginate.iterator(octokit.rest.issues.listComments, parameters)) {
