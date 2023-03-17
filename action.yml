@@ -1,0 +1,20 @@
+name: 'Add terraform plan comment'
+description: 'add a terraform plan comment'
+
+inputs:
+  directory:
+    description: 'directory'
+    required: true
+    default: ''
+  stdout:
+    description: 'terraform plan outputs.stdout'
+    required: true
+    default: ''
+  stderr:
+    description: 'terraform plan outputs.stderr'
+    required: true
+    default: ''
+
+runs:
+  using: 'node16'
+  main: 'index.js'
