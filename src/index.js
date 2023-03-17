@@ -5,7 +5,7 @@ async function main() {
   // --- Inputs ---
   const token = core.getInput('token');
   const repository = core.getInput('repository');
-  const issueNumber = core.getInput('issue_number');
+  const issueNumber = core.getInput('issue-number');
   const directory = core.getInput('directory').replace(/.*\//g, '');
   const stdout = core.getInput('stdout');
   const stderr = core.getInput('stderr');
