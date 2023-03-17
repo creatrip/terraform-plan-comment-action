@@ -2,6 +2,10 @@ name: 'Add terraform plan comment'
 description: 'add a terraform plan comment'
 
 inputs:
+  issue-number:
+    description: 'issue-number'
+    required: true
+    default: ''
   token:
     description: 'token'
     required: true
