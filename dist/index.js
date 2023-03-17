@@ -9870,9 +9870,9 @@ async function main() {
 
   if (previousComment) {
     await octokit.rest.issues.updateComment({
-      issue_number: github.context.issue.number,
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
+      comment_id: previousComment.id,
       body: output,
     });
   } else {
