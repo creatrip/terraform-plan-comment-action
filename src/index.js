@@ -24,7 +24,7 @@ async function main() {
    */
   const result = stdout
     .replace(/[\s\S]*Terraform will perform the following actions:/g, '')
-    .replace(/─────────────────────────────────────────────────────────────────────────────[\s\S]*/g, '')
+    .replace(/\nPlan: [\s\S]*/g, '')
     .split('\n')
     .map((line) => (line.includes(' ~ ') ? `+${line}` : line))
     .map((line) => (line.includes(' + ') ? `+${line}` : line))
